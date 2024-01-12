@@ -130,22 +130,21 @@ class NSGA2(Generic[Individual, Fitness]):
         population_with_fitness: list[tuple[Fitness, Individual]],
     ):
         num_objectives = len(population_with_fitness[0][0])
-        mean_fitness = [
-            statistics.mean(fitness[idx] for fitness, _ in population_with_fitness)
-            for idx in range(num_objectives)
-        ]
         std_dev_fitness = [
             statistics.stdev(fitness[idx] for fitness, _ in population_with_fitness)
             for idx in range(num_objectives)
         ]
-        best_fitness = [
-            max(fitness[idx] for fitness, _ in population_with_fitness)
-            for idx in range(num_objectives)
-        ]
-        print(
-            f"Generation {generation_ind} - {best_fitness=} {std_dev_fitness=} {mean_fitness=}"
-        )
-        return best_fitness
+        print(f"Generation {generation_ind} - {std_dev_fitness=}")
+
+        for obj in range(num_objectives):
+            best_idxs = -1
+            best_fitness = tuple(-1 for _ in range(num_objectives))
+            for idx, (fitness, _) in enumerate(population_with_fitness):
+                if fitness[obj] > best_fitness[obj]:
+                    best_fitness = fitness
+                    best_idxs = idx
+            print(f"\t\tBest value for objective {obj}: {population_with_fitness[best_idxs][0]}")
+            
 
 
 # ============================================================= #

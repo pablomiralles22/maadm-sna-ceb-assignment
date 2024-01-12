@@ -18,4 +18,5 @@ dependencies:
   - giuliorossetti::cdlib==0.3.0
   - conda-forge::python-igraph==0.10.7
   - conda-forge::leidenalg==0.10.1
+  - conda-forge::optuna==3.5.0
   - pip==20.2
