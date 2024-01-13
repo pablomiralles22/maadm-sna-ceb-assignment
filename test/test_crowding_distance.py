@@ -6,7 +6,7 @@ sys.path.append(str(Path(__file__).resolve().parent.parent / "src"))
 import pytest
 import itertools
 
-from nsga_utils import CrowdingDistanceUtils
+from nsga2_utils import CrowdingDistanceUtils
 
 EPS = 1e-5
 

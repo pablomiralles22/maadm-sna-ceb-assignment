@@ -20,4 +20,5 @@ dependencies:
   - conda-forge::leidenalg==0.10.1
   - conda-forge::optuna==3.5.0
   - conda-forge::pytest==7.4.4
+  - conda-forge::ipympl==0.9.3
   - pip==20.2

@@ -3,7 +3,7 @@ from pathlib import Path
 sys.path.append(str(Path(__file__).resolve().parent.parent / "src"))
 
 import pytest
-from nsga_utils import fast_non_dominated_sort
+from nsga2_utils import fast_non_dominated_sort
 
 def test_fast_non_dominated_sort_empty_population():
     population = []
