@@ -70,7 +70,11 @@ class CrowdingDistanceUtils:
         """
         if num_best == 0:
             return []
+        crowding_distances = cls.calculate(fitness_values)
+        return nlargest(num_best, range(len(crowding_distances)), key=lambda idx: crowding_distances[idx])
 
+    @classmethod
+    def calculate(cls, fitness_values: list[Fitness]) -> list[float]:
         num_objectives = len(fitness_values[0])
         crowding_distances = [0 for _ in range(len(fitness_values))]
 
@@ -98,7 +102,6 @@ class CrowdingDistanceUtils:
                 prev_value = fitness_values[prev_j][obj_idx]
                 next_value = fitness_values[next_j][obj_idx]
                 crowding_distances[j] += (next_value - prev_value) / scale
-            
 
-        return nlargest(num_best, range(len(crowding_distances)), key=lambda idx: crowding_distances[idx])
+        return crowding_distances
 
