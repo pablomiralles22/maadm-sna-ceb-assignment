@@ -219,7 +219,7 @@ def normalized_zitzler(pareto_front: list[tuple[float, float]]) -> float:
 
 
 def objective(trial):
-    population_size = trial.suggest_int("population_size", 20, 150, step=10)
+    population_size = trial.suggest_int("population_size", 25, 150, step=25)
     pcross = trial.suggest_float("pcross", 0.5, 1.0, step=0.05)
     pmut = trial.suggest_float("pmut", 0.0, 0.5, step=0.05)
     mutate_ratio_random = trial.suggest_float("mutate_ratio_random", 0.0, 0.2)
