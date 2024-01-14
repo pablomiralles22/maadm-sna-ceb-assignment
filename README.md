@@ -27,3 +27,14 @@ Máscara random para cruces, debería ser invariante por permutaciones
 Funciones objetivo correlacionadas negativamente
 
 Usar `optuna` para optimizar hiperparámetros.
+
+
+
+---
+## Discusión
+
+Vamos a intentar dilucidar lo que ocurre. Consideramos para las comunidades originales dos métricas:
+* Densidad interna: número de aristas dentro de la comunidad dividido por todas las aristas que podría haber ($n_s \cdot (n_s-1) / 2$).
+* Fracción de aristas de nodos de la comunidad que no salen hacia fuera de la comunidad.
+
+Fijado un grafo, estas dos métricas se contraponen: hacer una comunidad más grande favorecerá que todas sus aristas se queden dentro, pero a cambio podría disminuir su densidad si este nodo aporta pocas aristas internas.

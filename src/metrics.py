@@ -6,7 +6,7 @@ from typing import Literal, Callable
 from cdlib import NodeClustering
 from cdlib.evaluation import internal_edge_density
 
-def avg_odf(graph: nx.Graph, community: object) -> float:
+def avg_odf(graph: nx.Graph, community: object, summary=True) -> float:
     """
     Average Out-Degree Fraction (AODF) is the average of the out-degree fraction.
     Redefined because it was wrong in the library cdlib.
@@ -24,7 +24,9 @@ def avg_odf(graph: nx.Graph, community: object) -> float:
             ]
         )
         values.append(out_degree_fraction)
-    return np.mean(values)
+    if summary is True:
+        return np.mean(values)
+    return values
 
 def build_metric(
     metric_name: Literal["modularity", "avg_odf", "internal_density"],
