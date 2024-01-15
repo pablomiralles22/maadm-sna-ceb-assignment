@@ -1,6 +1,6 @@
 
 NUM_PROCS=6 # number of processes to run in parallel for each metric
-NUM_TRIALS=20
+NUM_TRIALS=20 # NUM_TRIALS * NUM_PROCS = total number of trials
 BUDGET_FITNESS_CALLS=5000 # low compute :(
 RUNS_PER_EXPERIMENT=1 # low compute :(
 METRIC_1="internal_density"

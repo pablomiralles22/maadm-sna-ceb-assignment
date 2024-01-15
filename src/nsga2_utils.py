@@ -64,16 +64,6 @@ class CrowdingDistanceUtils:
     __EPS: float = 1e-6
 
     @classmethod
-    def get_best(cls, fitness_values: list[Fitness], num_best: int) -> list[int]:
-        """
-        Devuelve los `num_best` índices de los individuos que tienen la mayor distancia de crowding
-        """
-        if num_best == 0:
-            return []
-        crowding_distances = cls.calculate(fitness_values)
-        return nlargest(num_best, range(len(crowding_distances)), key=lambda idx: crowding_distances[idx])
-
-    @classmethod
     def calculate(cls, fitness_values: list[Fitness]) -> list[float]:
         num_objectives = len(fitness_values[0])
         crowding_distances = [0 for _ in range(len(fitness_values))]
