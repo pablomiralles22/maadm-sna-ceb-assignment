@@ -43,7 +43,7 @@ sola comunidad original. Esto se da en 13 de 18 comunidades.
 
 \begin{figure}[!htb]
   \centering
-  \includegraphics[width=.9\linewidth]{img/1_bipartite_comp}
+  \includegraphics[width=.7\linewidth]{img/1_bipartite_comp}
   \caption{Comparación de comunidades mediante un grafo bipartito. A la
     izquierda vemos las comunidades \emph{ground truth}, y a la derecha las
     generadas por el algoritmo de Leiden.  Los colores de las comunidades en el
@@ -106,7 +106,20 @@ vemos que la comunidad grande se divide en solo tres comunidades, lo cual es una
 gran mejora, pero sigue sin llegar a juntarse en una. Además, las comunidades
 reales más pequeñas las junta con esas tres que corresponden a la más grande.
 Finalmente, vemos que dos parejas de comunidades reales medianas quedan juntas.
-Hemos pasado de un extremo a otro salvo con la comunidad más grande.
+
+Observamos que hemos pasado de un extremo a otro salvo con la comunidad más
+grande. Con una resolución alta, el algoritmo separaba las comunidades
+demasiado, y con una resolución baja, tiende a juntarlas demasiado. Por lo
+tanto, no parece que podamos recuperar la estructura original mediante estos
+algoritmos, ni siquiera tratando de seleccionar la resolución correcta. Esto
+ocurre porque distintas partes de la estructura de red requieren distintas
+resoluciones, pero esto no se puede saber a priori sin el \emph{ground truth}.
+Este problema con algunos métodos multi-resolución ya fue evaluado por
+\citeauthor{lancichinetti2011Limitsmodularity}
+\cite{lancichinetti2011Limitsmodularity}: \emph{"We show that multiresolution
+modularity suffers from two opposite coexisting problems: the tendency to merge
+small subgraphs, which dominates when the resolution is low; the tendency to
+split large subgraphs, which dominates when the resolution is high"}.
 
 \begin{figure}[!htb]
   \centering
@@ -118,7 +131,7 @@ Hemos pasado de un extremo a otro salvo con la comunidad más grande.
 
 \begin{figure}[!htb]
   \centering
-  \includegraphics[width=.9\linewidth]{img/1_best_res_bipartite_comp}
+  \includegraphics[width=.7\linewidth]{img/1_best_res_bipartite_comp}
   \caption{Comparación de comunidades mediante un grafo bipartito. A la
     izquierda vemos las comunidades \emph{ground truth}, y a la derecha las
     generadas por el algoritmo de Lovain con \(\gamma=0.06\).  Los colores de
