@@ -65,10 +65,10 @@ se toman las siguientes decisiones:
         \lstinline{ratio} por otro vecino aleatorio del nodo.
 
       \item \lstinline{join(ratio)}. Consideramos ahora solo los nodos cuyo gen
-        es él mismo o apunta a otro gen que le apunta de vuelta. En estos casos,
-        el nodo está en una comunidad con uno o dos nodos. Para cada uno
-        de estos, se muta con probabilidad \lstinline{ratio} por un vecino
-        aleatorio del nodo.
+        es él mismo o apunta a otro gen que le apunta de vuelta. En estos
+        casos, el nodo podría adherir su comunidad a otra apuntado a otro
+        vecino. Para cada uno de estos, se muta con probabilidad
+        \lstinline{ratio} por un vecino aleatorio del nodo.
 
       \item \lstinline{separate(ratio)}. Para cada nodo, con probabilidad
         \lstinline{ratio} se muta por él mismo, rompiendo entonces un enlace
