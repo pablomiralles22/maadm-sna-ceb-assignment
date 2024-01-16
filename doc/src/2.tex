@@ -25,8 +25,8 @@ se toman las siguientes decisiones:
         .$$
 
       \item \textbf{\emph{Average out degree fraction.}} Dada una comunidad \(S\),
-        definimos \(I_S = \{ (u,v): u,v\in S \}\) como el número de aristas internas
-        a \(S\), y \(T_S = \{ (u,v): u\in S \text{ o } v \in S\}\) como el número
+        definimos \(I_S = \{ (u,v): u,v\in S \}\) como el conjunto de aristas internas
+        a \(S\), y \(T_S = \{ (u,v): u\in S \text{ o } v \in S\}\) como el conjunto
         de aristas que tienen al menos un extremo en \(S\). La fracción de aristas
         que apuntan al exterior de \(S\) es entonces \(1 - |I_S| / |T_S|\). La métrica
         se calcula entonces como:
@@ -38,14 +38,14 @@ se toman las siguientes decisiones:
 
     Estas dos métricas es claro que se contraponen. Cuantos más nodos añadimos a una
     comunidad, más difícil es que todos estén bien conectados entre si, y por lo tanto
-    la densidad interna media. Por otro lado, si añadimos cuantos más nodos tenga una
+    la densidad interna disminuye. Por otro lado, cuantos más nodos tenga una
     comunidad, menos potenciales aristas hacia fuera de dicha comunidad tendrá. En el
     caso extremo, una sola comunidad nos da \(0\) de \emph{average out degree fraction},
-    mientras que si tenemos \(n\) comunidades, cada una con un solo nodo, y por lo tanto
-    todas tendrán densidad interna máxima.
+    mientras que si tenemos \(n\) comunidades, cada una con un solo nodo, cada comunidad
+    tendría densidad interna máxima.
 
-    En el artículo citado estas dos métricas no aparecen como correlacionadas negativamente,
-    porque una se minimiza y la otra se maximiza. En este caso mi algoritmo solo maximiza,
+    En el artículo citado estas dos métricas aparecen correlacionadas positivamente,
+    porque una se minimiza y la otra se maximiza. En este caso, mi algoritmo solo maximiza,
     de forma que trabajaré con \(1 - AVG\_ODF\) en lugar de con \(AVG\_ODF\).
 
   \item[Operadores de selección.] Usaré selección por torneo, minimizando el rango (número
@@ -76,9 +76,11 @@ se toman las siguientes decisiones:
     \end{itemize}
 
     Al introducir estas tres mutaciones con parámetros, permite dar más o menos
-    peso a cada una, e integrarlas en la medida que mejor resultados de. Estos
-    hiperparámetros se seleccionarán evaluando los frentes de Pareto con distintas
-    métricas, mediante la librería de Python \lstinline{optuna}.
+    peso a cada una, e integrarlas en la medida que mejor resultados obtenga.
+    Al poder optimizar estos hiperparámetros, el algoritmo podrá adaptar el
+    nivel de exploración en zonas de comunidades grandes o pequeñas. Estos
+    hiperparámetros se seleccionarán evaluando los frentes de Pareto con
+    distintas métricas, mediante la librería de Python \lstinline{optuna}.
 \end{description}
 
 Los parámetros optimizados con \lstinline{optuna} se muestran en la
@@ -89,7 +91,7 @@ algoritmo devuelve un nuevo frente de Pareto con estas métricas, y selecciono
 una solución intermedia de compromiso arbitraria. Se realizan en total \(120\)
 pruebas de hiperparámetros, con \(5000\) llamadas a la función de
 \emph{fitness} y un solo experimento por cada una. Serían necesarios varios
-experimentos para cada combinación de hiperparámetros, obteniendo un media de
+experimentos para cada combinación de hiperparámetros, obteniendo una media de
 las métricas, pero esto es demasiado costoso computacionalmente.
 
 \begin{table}[!htbp]

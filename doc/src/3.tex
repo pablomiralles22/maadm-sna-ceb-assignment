@@ -2,7 +2,7 @@
 
 Evaluamos en esta sección el frente de Pareto de soluciones obtenido.
 Consideramos primero la forma de las soluciones obtenidas, a grandes rasgos. En
-la figura \ref{fig:3-pareto-num-coms-1} vemos el frente de Pareto obtenido,
+la figura \ref{fig:3-pareto-num-coms} vemos el frente de Pareto obtenido,
 junto con el número de comunidades en cada solución. Como esperábamos, cuanto
 más se prioriza la densidad interna, en más comunidades se dividen los nodos, y
 al revés con el \emph{average out-degree fraction}.
@@ -35,15 +35,14 @@ al revés con el \emph{average out-degree fraction}.
 \end{figure}
 
 Respecto a la información mutua con el \emph{ground truth}, vemos en la figura
-\ref{fig:3-pareto-nmi-1} la comparación de dicha métrica entre las soluciones
+\ref{fig:3-pareto-nmi} la comparación de dicha métrica entre las soluciones
 del frente de Pareto. Es fácil ver que en general funciona mejor priorizar
 bastante el \emph{average out-degree fraction}. Cogiendo la mejor solución
-respecto a la información mutua, vemos en la figuras
-\ref{fig:3-circle-comp,fig:3-bipartite} la comparación de las comunidades
-obtenidas con las del \emph{ground truth}. Observamos una solución ligeramente
-peor que la obtenida \emph{tuneando} el parámetro de resolución en el algoritmo
-de Louvain, tanto por el valor de la información mutua (\(0.6788 \leq 0.7\))
-como gráficamente.
+respecto a la información mutua, vemos en las figuras \ref{fig:3-circular-comp} y
+\ref{fig:3-bipartite} la comparación de las comunidades obtenidas con las del
+\emph{ground truth}. Observamos una solución ligeramente peor que la obtenida
+\emph{tuneando} el parámetro de resolución en el algoritmo de Louvain, tanto
+por el valor de la información mutua (\(0.6788 \leq 0.7\)) como gráficamente.
 
 \begin{figure}[!htb]
   \centering
@@ -84,7 +83,8 @@ como gráficamente.
   \begin{subfigure}{.4\textwidth}
     \centering
     \includegraphics[width=.9\linewidth]{img/3_best_sol_circular_comp_2}
-    \caption{Gráfico circular de las comunidades generadas por el algoritmo de Leiden. }
+    \caption{Gráfico circular de las comunidades generadas por la mejor
+      solución del algoritmo \emph{NSGA-II}. }
     \label{fig:3-circular-comp-2}
   \end{subfigure}
   \caption{Comparación de comunidades mediante un grafo bipartito. A la
